@@ -23,6 +23,7 @@ gem 'rubocop', require: false, groups: [:development, :test]
 gem 'rspec-rails', require: false, groups: [:development, :test]
 gem 'sass-rails', '~> 5.0'
 gem 'sextant', groups: [:development]
+gem 'slim-rails'
 gem 'spring', groups: [:development]
 gem 'spring-watcher-listen', '~> 2.0.0', groups: [:development]
 gem 'turbolinks', '~> 5'
