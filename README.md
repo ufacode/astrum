@@ -1,24 +1,19 @@
-# README
+# Идея
+Платформа для различных курсов, семинаров, лекций, лендингов :)))
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Роли
+**Владелец** - пользователь который 
+- регистрируется на сайте
+- создает свою компанию (запись в модели Ownership)
+- получает поддомен (mycompany.lvh.me:3000)
+- создает курс (название, описание, когда старт, продолжительность, периодичность например по календарю) (запись в модели Membership но с типом как owner например)
+- добавляет в курс лекции
+- формирует содержание каждой лекции как набор различных блоков Text, Code, Photo, File, Video
+- может отвечать ученикам на вопросы по лекциям
 
-Things you may want to cover:
+**Ученик** - пользователь который
+- регистрируется на общем сайте или сайте компании с курсами (курсом)
+- присоединяется к курсу (запись в модели Membership как тип client)
+- может читать курс, спрашивать и комментировать лекции
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![Схема](https://trello-attachments.s3.amazonaws.com/57977b0e3e86058b4b1728a6/997x1033/5f11f6bb6a9dd9d9d13ca590583da494/Astrum.png)
