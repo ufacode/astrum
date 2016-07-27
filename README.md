@@ -1,6 +1,8 @@
 # Идея
 Платформа для различных курсов, семинаров, лекций, лендингов :)))
 
+[ ![Codeship Status for ufacode/astrum](https://codeship.com/projects/d9cb9250-3635-0134-8cc6-4abb49b73567/status?branch=master)](https://codeship.com/projects/165460)
+
 # Роли
 **Владелец** - пользователь который 
 - регистрируется на сайте
