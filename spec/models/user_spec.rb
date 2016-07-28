@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
     it 'checks empty name' do
       subject.name = nil
       subject.valid?
-      expect(subject.errors[:first_name].count).to be > 0
+      expect(subject.errors[:name].count).to be > 0
     end
 
     it 'check length of name' do
@@ -17,13 +17,13 @@ RSpec.describe User, type: :model do
     it 'checks empty email' do
       subject.email = nil
       subject.valid?
-      expect(subject.errors[:last_name].count).to be > 0
+      expect(subject.errors[:email].count).to be > 0
     end
 
     it 'checks uniqueness of email' do
-      create(:user, first_name: subject.first_name, last_name: subject.last_name)
+      create(:user, name: subject.name, email: subject.email, password: subject.password)
       subject.valid?
-      expect(subject.errors[:full_name].count).to be > 0
+      expect(subject.errors[:email].count).to be > 0
     end
   end
 end
