@@ -1,5 +1,8 @@
 class User < ApplicationRecord
-  validates :name, presence: true, length: {maximum: 255}
+  has_many :ownerships
+  has_many :companies, through: :ownerships
+
+  validates :name, presence: true, length: { maximum: 255 }
   validates :email, presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
