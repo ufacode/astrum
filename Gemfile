@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'listen', '~> 3.0.5', group: [:development]
 gem 'mysql2', '>= 0.3.18', '< 0.5'
+gem "paranoia", github: "rubysherpas/paranoia", branch: "rails5"
 gem 'puma', '~> 3.0'
 gem 'russian'
 gem 'rails', '~> 5.0.0'
