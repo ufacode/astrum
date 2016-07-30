@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 RSpec.describe Company, type: :model do
   subject { FactoryGirl.build(:company) }
 
