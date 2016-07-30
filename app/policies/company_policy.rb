@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 class CompanyPolicy < ApplicationPolicy
   def create?
-    @user
+    @user && @user.in?(@record.users)
   end
 
   def new?
-    create?
+    @user
   end
 
   def update?
-    @user
+    @user && @user == @record.users.first
   end
 
   def edit?
@@ -17,12 +17,6 @@ class CompanyPolicy < ApplicationPolicy
   end
 
   def destroy?
-    @user
-  end
-
-  class Scope < Scope
-    def resolve
-      scope
-    end
+    update?
   end
 end

@@ -2,6 +2,7 @@
 class Company < ApplicationRecord
   has_many :ownerships
   has_many :users, through: :ownerships
+  has_one :owner, -> { ownerships.first.user }, class_name: 'User'
 
   validates :name, presence: true, length: { maximum: 255 }
 

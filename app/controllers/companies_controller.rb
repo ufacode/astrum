@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_it, only: [:edit, :update, :destroy]
+  after_action :authorize_it, only: :new
 
   # GET /companies
   def index
@@ -14,17 +16,16 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   def new
     @company = Company.new
-    authorize @company
   end
 
   # GET /companies/1/edit
   def edit
-    authorize @company
   end
 
   # POST /companies
   def create
     @company = Company.new(company_params)
+    @company.users = [current_user]
     authorize @company
 
     if @company.save
@@ -36,7 +37,6 @@ class CompaniesController < ApplicationController
 
   # PATCH/PUT /companies/1
   def update
-    authorize @company
     if @company.update(company_params)
       redirect_to @company, notice: 'Company was successfully updated.'
     else
@@ -46,7 +46,6 @@ class CompaniesController < ApplicationController
 
   # DELETE /companies/1
   def destroy
-    authorize @company
     @company.destroy
     redirect_to companies_url, notice: 'Company was successfully destroyed.'
   end
@@ -61,5 +60,9 @@ class CompaniesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def company_params
     params.require(:company).permit(:name, :description)
+  end
+
+  def authorize_it
+    authorize @company
   end
 end
