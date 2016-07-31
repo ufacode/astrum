@@ -17,7 +17,7 @@ end
 #  deleted_at  :datetime
 #  description :text(65535)
 #  id          :integer          not null, primary key
-#  name        :string(255)
+#  name        :string(255)      not null
 #  updated_at  :datetime         not null
 #
 # Indexes
