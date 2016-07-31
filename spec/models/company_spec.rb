@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 RSpec.describe Company, type: :model do
   subject { FactoryGirl.build(:company) }
 
@@ -12,6 +13,13 @@ RSpec.describe Company, type: :model do
       subject.name = 'Astrum' * 100
       subject.valid?
       expect(subject.errors[:name].count).to be > 0
+    end
+  end
+
+  describe '#owner' do
+    it 'return first User' do
+      subject.save
+      expect(subject.owner).to eq Ownership.where(company: subject).first.user
     end
   end
 end

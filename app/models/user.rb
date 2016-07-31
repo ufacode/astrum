@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class User < ApplicationRecord
   has_many :ownerships
   has_many :companies, through: :ownerships
@@ -6,8 +7,7 @@ class User < ApplicationRecord
   validates :email, presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 end
 
 # == Schema Information

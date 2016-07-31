@@ -1,10 +1,15 @@
+# frozen_string_literal: true
 class Company < ApplicationRecord
+  acts_as_paranoid
+
   has_many :ownerships
   has_many :users, through: :ownerships
 
   validates :name, presence: true, length: { maximum: 255 }
 
-  acts_as_paranoid
+  def owner
+    ownerships.first&.user
+  end
 end
 
 # == Schema Information
@@ -15,7 +20,7 @@ end
 #  deleted_at  :datetime
 #  description :text(65535)
 #  id          :integer          not null, primary key
-#  name        :string(255)
+#  name        :string(255)      not null
 #  updated_at  :datetime         not null
 #
 # Indexes
