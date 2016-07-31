@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.describe CompanyPolicy do
   subject { CompanyPolicy }
 
-  permissions :create?, :update?, :destroy? do
+  permissions :create?, :update?, :destroy?, :edit? do
     user1 = User.new
     user2 = User.new
     company = Company.new

@@ -8,11 +8,11 @@ class ApplicationPolicy
   end
 
   def index?
-    false
+    true
   end
 
   def show?
-    scope.where(id: record.id).exists?
+    true
   end
 
   def create?
@@ -24,14 +24,14 @@ class ApplicationPolicy
   end
 
   def update?
-    false
+    create?
   end
 
   def edit?
-    update?
+    create?
   end
 
   def destroy?
-    false
+    create?
   end
 end

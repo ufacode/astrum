@@ -1,12 +1,15 @@
 # frozen_string_literal: true
 class Company < ApplicationRecord
+  acts_as_paranoid
+
   has_many :ownerships
   has_many :users, through: :ownerships
-  has_one :owner, -> { ownerships.first.user }, class_name: 'User'
 
   validates :name, presence: true, length: { maximum: 255 }
 
-  acts_as_paranoid
+  def owner
+    ownerships.first&.user
+  end
 end
 
 # == Schema Information
