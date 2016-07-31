@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 class CompaniesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_company, only: [:show, :edit, :update, :destroy]
   before_action :authorize_it, only: [:edit, :update, :destroy]
 
   def index
-    @companies = Company.all
+    @company = Company.find_by_domain(request.subdomain)
+    @companies = Company.joins(:ownerships).where(ownerships: { user: @company.owner }) unless request.subdomain.empty?
   end
 
   def show; end
@@ -48,7 +49,7 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.require(:company).permit(:name, :description)
+    params.require(:company).permit(:name, :description, :domain)
   end
 
   def authorize_it

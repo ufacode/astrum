@@ -1,23 +1,33 @@
-h1 Listing companies
-
-table
-  thead
-    tr
-      th Name
-      th Description
-      th
-      th
-      th
-
-  tbody
-    - @companies.each do |company|
+- unless request.subdomain.empty?
+  h1 Listing companies
+  h1 Company by #{@company.owner.name}
+  = render 'single_record'
+  table
+    thead
       tr
-        td = company.name
-        td = company.description
-        td = link_to 'Show', company
-        td = link_to 'Edit', edit_company_path(company)
-        td = link_to 'Destroy', company, data: { confirm: 'Are you sure?' }, method: :delete
+        th Name
+        th Domain
+        th Description
+        th
+        - if current_user
+          th
+          th
 
-br
+    tbody
+      - @companies.each do |company|
+        tr
+          td = company.name
+          td
+            a href="#{request.protocol}#{company.domain}.#{request.domain}" = company.domain
+          td = company.description
+          td = link_to 'Show', company
+          - if current_user
+            td = link_to 'Edit', edit_company_path(company)
+            td = link_to 'Destroy', company, data: {confirm: 'Are you sure?'}, method: :delete
 
-= link_to 'New Company', new_company_path
+  br
+
+  - if current_user
+    = link_to 'New Company', new_company_path
+- else
+  h1 Welcome

@@ -1,11 +1,4 @@
-p#notice = notice
-
-p
-  strong Name:
-  = @company.name
-p
-  strong Description:
-  = @company.description
+= render 'single_record'
 
 = link_to 'Edit', edit_company_path(@company)
 '|

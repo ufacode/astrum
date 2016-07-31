@@ -14,6 +14,13 @@ RSpec.describe Company, type: :model do
       subject.valid?
       expect(subject.errors[:name].count).to be > 0
     end
+
+    it 'check unique for domain' do
+      subject.domain = 'astrum'
+      subject.save
+      subject2 = Company.new(name: 'Same name', domain: 'astrum')
+      expect { subject2.save! }.to raise_error(ActiveRecord::RecordInvalid)
+    end
   end
 
   describe '#owner' do
