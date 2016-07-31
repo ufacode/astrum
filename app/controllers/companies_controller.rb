@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 class CompaniesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_company, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_it, only: [:edit, :update, :destroy, :new]
+  before_action :authorize_it, only: [:edit, :update, :destroy]
 
   def index
     @companies = Company.all
@@ -17,7 +18,8 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(company_params)
-    @company.users = [current_user]
+    @company.users << current_user
+    authorize @company
 
     if @company.save
       redirect_to @company, notice: 'Company was successfully created.'
@@ -50,6 +52,6 @@ class CompaniesController < ApplicationController
   end
 
   def authorize_it
-    authorize Company
+    authorize @company
   end
 end
