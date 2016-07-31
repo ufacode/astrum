@@ -8,7 +8,7 @@ RSpec.describe CompanyPolicy do
     user1 = User.new
     user2 = User.new
     company = Company.new
-    company.users = [user1]
+    company.users << user1
 
     it 'denied access if is not user' do
       expect(subject).not_to permit(nil, Company.new)
