@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'annotate', group: [:development]
 gem 'better_errors', group: [:development]
 gem 'binding_of_caller', group: [:development]
+gem 'bootstrap-sass'
 gem 'brakeman', require: false, group: [:development, :test]
 gem 'browser'
 gem 'byebug', group: [:development, :test], platform: :mri

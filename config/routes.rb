@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
-  resources :companies
-  devise_for :users
-  root 'companies#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  constraints subdomain: '' do
+    scope :main do
+      devise_for :users
+    end
+    root 'main/main#index'
+  end
+  constraints subdomain: '*' do
+    scope :domain do
+      root 'companies#index'
+      resources :companies
+    end
+  end
 end
