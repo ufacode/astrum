@@ -1,0 +1,24 @@
+h1 Listing courses
+
+table.table.table-hover.table-striped
+  tr
+    th Name
+    th Company
+    th
+    th
+    th
+  - @courses.each do |course|
+    tr
+      td
+        = course.name
+      td
+        = course.company.name
+      td
+        = link_to 'Show', company_course_path(course.company, course)
+      td
+        = link_to 'Edit', edit_company_course_path(course.company, course) if policy(course).edit?
+      td
+        = link_to 'Destroy', company_course_path(course.company, course), data: { confirm: 'Are you sure?' },
+                method: :delete if policy(course).destroy?
+
+= link_to 'New Course', new_company_course_path, class: 'btn btn-blue-fill' if policy(Course.new).create?

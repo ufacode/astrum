@@ -1,7 +1,7 @@
 - unless request.subdomain.empty?
   h1 Listing companies
   h1 Company by #{@company.owner.name}
-  = render 'single_record'
+  = render 'main/companies/single_record'
   table
     thead
       tr

@@ -1,0 +1,13 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @course.name
+p
+  strong Company:
+  // Зачем тут явно name указывать?
+  = @course.company.name
+
+= link_to 'Edit', edit_company_course_path(@course.company, @course)
+'|
+= link_to 'Back', company_courses_path(@course.company)

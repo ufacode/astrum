@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160731165825) do
+ActiveRecord::Schema.define(version: 20160805113442) do
 
   create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",                      null: false
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 20160731165825) do
     t.string   "domain"
     t.index ["deleted_at"], name: "index_companies_on_deleted_at", using: :btree
     t.index ["domain"], name: "index_companies_on_domain", unique: true, using: :btree
+  end
+
+  create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.integer  "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "aasm_state"
+    t.index ["company_id"], name: "index_courses_on_company_id", using: :btree
   end
 
   create_table "ownerships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -50,6 +59,7 @@ ActiveRecord::Schema.define(version: 20160731165825) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "courses", "companies"
   add_foreign_key "ownerships", "companies"
   add_foreign_key "ownerships", "users"
 end
