@@ -12,13 +12,13 @@ nav.navbar
         = image_tag 'logo.png', 'data-active-url': asset_url('logo-active.png')
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right.main-nav
-        li
-          a href="#courses"  Courses
-        li
-          a href="#companies"  Companies
+        /li
+        /  a href="#courses"  Courses
         li
           a href="#about"  About
         - if user_signed_in?
+          li
+            = link_to 'Companies', companies_path
           li
             = link_to 'Sign out', destroy_user_session_path, method: :destroy
         - else
