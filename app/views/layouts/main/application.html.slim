@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title Astrum
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    body
+      = render 'main/shared/header'
+      section
+        .cut.cut-top
+        .container style='padding-top: 140px'
+          .row.intro-tables
+            = yield
+      = render 'main/shared/footer'
