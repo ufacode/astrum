@@ -11,6 +11,11 @@ class Company < ApplicationRecord
   def owner
     ownerships.first&.user
   end
+
+  def url
+    # "#{request.protocol}#{company.domain}.#{request.domain}"
+    "#{domain}.lvh.me:3000"
+  end
 end
 
 # == Schema Information

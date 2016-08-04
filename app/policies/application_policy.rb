@@ -15,23 +15,24 @@ class ApplicationPolicy
     true
   end
 
-  def create?
-    false
-  end
-
   def new?
-    create?
+    # @TODO: check user banned? etc...
+    user.present?
   end
 
-  def update?
-    create?
+  def create?
+    new?
   end
 
   def edit?
-    create?
+    record.present?
+  end
+
+  def update?
+    edit?
   end
 
   def destroy?
-    create?
+    edit?
   end
 end

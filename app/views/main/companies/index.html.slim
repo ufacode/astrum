@@ -1,0 +1,23 @@
+h1 Listing companies
+
+table.table.table-hover.table-striped
+  tr
+    th Name
+    th Domain
+    th Description
+    th
+    th
+  - current_user.companies.each do |company|
+    tr
+      td
+        = company.name
+      td
+        = link_to company.domain, company.url
+      td
+        = company.description
+      td
+        = link_to 'Edit', edit_company_path(company) if policy(company).edit?
+      td
+        = link_to 'Destroy', company, data: {confirm: 'Are you sure?'}, method: :delete if policy(company).destroy?
+
+= link_to 'New Company', new_company_path, class: 'btn btn-blue-fill' if policy(Company.new).create?
