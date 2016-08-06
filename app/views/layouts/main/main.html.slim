@@ -5,10 +5,12 @@ html
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    body.inside
-      = render 'main/shared/header', nav_class: 'navbar-fixed-top'
+    body
+      = render 'main/shared/header'
+      = render 'main/shared/intro'
       section
-        .container
-          .row
+        .cut.cut-top
+        .container style='padding-top: 140px'
+          .row.intro-tables
             = yield
-  = render 'main/shared/footer'
+      = render 'main/shared/footer'

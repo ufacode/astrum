@@ -4,6 +4,7 @@ class Company < ApplicationRecord
 
   has_many :ownerships
   has_many :users, through: :ownerships
+  has_many :courses
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :domain, uniqueness: { case_sensitive: false }

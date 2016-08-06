@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   constraints subdomain: /.*/ do
     scope module: :domain do
-      resources :companies, only: [:index, :show]
+      resources :companies, only: [:index, :show] do
+        resources :courses
+      end
     end
     root 'domain/companies#index'
   end

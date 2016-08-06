@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'aasm'
 gem 'annotate', group: [:development]
 gem 'better_errors', group: [:development]
 gem 'binding_of_caller', group: [:development]
@@ -17,6 +18,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'listen', '~> 3.0.5', group: [:development]
 gem 'mysql2', '>= 0.3.18', '< 0.5'
+gem 'nprogress-rails' # turbolinks progressbar
 gem 'paranoia', github: 'rubysherpas/paranoia', branch: 'rails5'
 gem 'puma', '~> 3.0'
 gem 'pundit'

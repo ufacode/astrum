@@ -4,8 +4,8 @@ require 'rails_helper'
 RSpec.describe CompanyPolicy do
   subject { described_class }
   let(:company) { FactoryGirl.create(:company) }
-  let(:owner){ company.owner }
-  let(:guest){ FactoryGirl.create(:user) }
+  let(:owner) { company.owner }
+  let(:guest) { FactoryGirl.create(:user) }
 
   permissions :create?, :new? do
     it 'nil user can`t create a new Company' do
