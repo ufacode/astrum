@@ -1,6 +1,6 @@
 .preloader
   = image_tag 'loader.gif', alt: 'Per aspera ad astra'
-nav.navbar
+nav.navbar class = local_assigns[:nav_class]
   .container
     .navbar-header
       button.navbar-toggle.collapsed data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"
@@ -8,7 +8,7 @@ nav.navbar
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand href="#"
+      a.navbar-brand href="/"
         = image_tag 'logo.png', 'data-active-url': asset_url('logo-active.png')
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right.main-nav
@@ -20,18 +20,10 @@ nav.navbar
           li
             = link_to 'Companies', companies_path
           li
-            = link_to 'Sign out', destroy_user_session_path, method: :destroy
+            = link_to 'Sign out', destroy_user_session_path, method: :delete
         - else
           li
             = link_to 'Sign in', new_user_session_path
           li
             = link_to 'Sign up', new_user_registration_path
-header#intro
-  .container
-    .table
-      .header-text
-        .row
-          .col-md-12.text-center
-            h3.light.white Take care of your mind.
-            h1.white.typed It's the only place where your ideas have to live.
-            /span.typed-cursor \
+

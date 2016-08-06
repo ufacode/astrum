@@ -101,11 +101,12 @@ ul.white-list {
   }
 }
 
+$header-bg: rgba(28, 36, 65, 0.93);
 header {
   position: relative;
   width: 100%;
   color: white;
-  background: rgba(28, 36, 65, 0.93);
+  background: $header-bg;
   background: image-url('header.jpg');
   background-size: cover;
   .table {
@@ -139,6 +140,10 @@ header {
   }
 }
 
+header#inside{
+  height: 140px;
+}
+
 a {
   text-decoration: none;
   color: #00a8ff;
@@ -165,11 +170,27 @@ nav {
     top: 0;
     padding: 25px 0;
     opacity: 0;
-    background: white;
+    background: $header-bg;
     box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.05);
     .navbar-nav > li > a:not(.btn) {
-      color: #bbb;
+      color: #FFF;
     }
+    .navbar-nav > li > a:not(.btn):hover {
+      color: $header-bg;
+    }
+  }
+}
+
+.inside{
+  nav{
+    opacity: 1;
+    position: fixed;
+    top: 0;
+    margin-top: 0;
+  }
+  section{
+    margin-top: 140px;
+    margin-bottom: 30px;
   }
 }
 
