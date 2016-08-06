@@ -1,27 +1,26 @@
 # frozen_string_literal: true
-class Domain::CoursesController < ApplicationController
+class Domain::CoursesController < Domain::ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :set_company, only: [:new, :create, :edit]
   before_action :authorize_it, only: [:edit, :update, :destroy]
 
   def index
-    @courses = Course.all
+    @courses = Course.where(company: current_company)
   end
 
   def show; end
 
   def new
-    @course = @company.courses.build
+    @course = current_company.courses.build
   end
 
   def edit; end
 
   def create
-    @course = @company.courses.build(course_params)
+    @course = current_company.courses.build(course_params)
 
     if @course.save
-      redirect_to company_course_path(@company, @course), notice: 'Course was successfully created.'
+      redirect_to course_path(@course), notice: 'Course was successfully created.'
     else
       render :new
     end
@@ -29,26 +28,21 @@ class Domain::CoursesController < ApplicationController
 
   def update
     if @course.update(course_params)
-      redirect_to company_course_path(@course), notice: 'Course was successfully updated.'
+      redirect_to course_path(@course), notice: 'Course was successfully updated.'
     else
       render :edit
     end
   end
 
   def destroy
-    @company = @course.company
     @course.destroy
-    redirect_to company_courses_path(@company), notice: 'Course was successfully destroyed.'
+    redirect_to courses_path(@company), notice: 'Course was successfully destroyed.'
   end
 
   private
 
   def set_course
     @course = Course.find(params[:id])
-  end
-
-  def set_company
-    @company = Company.find(params[:company_id])
   end
 
   def course_params

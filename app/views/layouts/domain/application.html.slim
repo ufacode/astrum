@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title Astrum
+     = csrf_meta_tags
+     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    - flash.each do |name, msg|
+      .name
+        = msg
+    - if user_signed_in?
+      div = current_user.name
+    = yield

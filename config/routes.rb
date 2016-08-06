@@ -1,18 +1,18 @@
+require_relative '../config/route_constraints/subdomain'
+
 Rails.application.routes.draw do
   constraints subdomain: '' do
     devise_for :users
     scope module: :main do
-      resources :companies
+      resources :companies, except: [:show]
     end
-    root 'main/main#index'
   end
 
-  constraints subdomain: /.*/ do
+  constraints(RouteConstraint::Subdomain.new) do
     scope module: :domain do
-      resources :companies, only: [:index, :show] do
-        resources :courses
-      end
+      resources :courses
     end
-    root 'domain/companies#index'
   end
+
+  root to: 'main#index'
 end
