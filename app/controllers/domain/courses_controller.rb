@@ -36,7 +36,7 @@ class Domain::CoursesController < Domain::ApplicationController
 
   def destroy
     @course.destroy
-    redirect_to courses_path(@company), notice: 'Course was successfully destroyed.'
+    redirect_to courses_path, notice: 'Course was successfully destroyed.'
   end
 
   private
