@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @lecture.name
+p
+  strong Course:
+  = @lecture.course.name
+
+= link_to 'Edit', course_lecture_path(@lecture.course, @lecture)
+'|
+= link_to 'Back', course_lectures_path
