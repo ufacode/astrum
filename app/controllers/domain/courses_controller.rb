@@ -27,6 +27,9 @@ class Domain::CoursesController < Domain::ApplicationController
   end
 
   def update
+    @course.publish if params[:publish_checkbox] && @course.draft?
+    @course.draft if !params[:publish_checkbox] && @course.published?
+
     if @course.update(course_params)
       redirect_to course_path(@course), notice: 'Course was successfully updated.'
     else
