@@ -9,4 +9,8 @@
   .field
     = f.label :name
     = f.text_field :name
+  - if !@course.new_record?
+    .field
+      = label_tag :publish_checkbox
+      = check_box_tag :publish_checkbox, {}, @course.published?
   .actions = f.submit
