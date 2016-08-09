@@ -5,7 +5,6 @@ FactoryGirl.define do
 
     after(:build) do |course|
       company = FactoryGirl.create(:company)
-      company.users << FactoryGirl.create(:user)
       course.company = company
     end
   end

@@ -1,0 +1,27 @@
+h1 Listing lectures
+
+table.table.table-hover.table-striped
+  tr
+    th Name
+    th Course
+    th
+    th
+    th
+  - @lectures.each do |lecture|
+    tr
+      td
+        = lecture.name
+      td
+        = lecture.course.name
+      td
+        = link_to 'Show', course_lecture_path(lecture.course, lecture)
+      td
+        = link_to 'Edit', edit_course_lecture_path(lecture.course, lecture)  if policy(lecture).edit?
+      td
+        = link_to 'Destroy', course_lecture_path(lecture.course, lecture),
+              data: { confirm: 'Are you sure?' },
+              method: :delete if policy(lecture).destroy?
+
+br
+
+= link_to 'New Lecture', new_course_lecture_path

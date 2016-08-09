@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   constraints(RouteConstraint::Subdomain.new) do
     scope module: :domain do
-      resources :courses
+      resources :courses do
+        resources :lectures
+      end
     end
   end
 
