@@ -3,6 +3,7 @@ class Lecture < ApplicationRecord
   acts_as_paranoid
 
   belongs_to :course
+  has_many :blocks
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :course, presence: true

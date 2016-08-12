@@ -1,6 +1,4 @@
 # frozen_string_literal: true
-require 'rails_helper'
-
 RSpec.describe CoursePolicy do
   subject { described_class }
   let(:guest) { FactoryGirl.create(:user) }

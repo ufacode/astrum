@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'aasm'
+gem 'acts_as_list'
 gem 'annotate', group: [:development]
 gem 'better_errors', group: [:development]
 gem 'binding_of_caller', group: [:development]

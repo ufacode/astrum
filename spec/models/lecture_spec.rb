@@ -1,6 +1,4 @@
 # frozen_string_literal: true
-require 'rails_helper'
-
 RSpec.describe Lecture, type: :model do
   subject { FactoryGirl.build(:lecture) }
 

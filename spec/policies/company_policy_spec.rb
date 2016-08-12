@@ -1,6 +1,4 @@
 # frozen_string_literal: true
-require 'rails_helper'
-
 RSpec.describe CompanyPolicy do
   subject { described_class }
   let(:company) { FactoryGirl.create(:company) }
