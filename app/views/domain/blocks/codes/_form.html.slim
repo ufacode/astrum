@@ -1,0 +1,12 @@
+= form_for @block.blockable, url: block_code_path(@block) do |f|
+  = form_errors(@block.blockable)
+
+  .field
+    = f.label :language
+    = f.text_field :language
+
+  .field
+    = f.label :content
+    = f.text_area :content
+
+  .actions = f.submit

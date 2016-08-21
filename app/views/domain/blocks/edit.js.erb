@@ -1,0 +1,1 @@
+$('[data-block="<%= params[:id] %>"]').replaceWith('<%= j render "domain/blocks/#{@block.blockable.class.to_s.split('::').last.downcase.pluralize}/form" %>');

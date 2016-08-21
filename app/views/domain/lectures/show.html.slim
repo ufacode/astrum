@@ -7,6 +7,36 @@ p
   strong Course:
   = @lecture.course.name
 
+div#blocks
+  - @lecture.blocks.each do |block|
+    div data-block="#{block.id}"
+      = render block.blockable
+    = link_to 'Edit', edit_block_path(block), remote: true
+    = link_to 'Destroy', block_path(block), method: :delete
+    = link_to 'Move up', block_path(block, order: :up), method: :put
+    = link_to 'Move down', block_path(block, order: :down), method: :put
+
+
 = link_to 'Edit', course_lecture_path(@lecture.course, @lecture)
 '|
 = link_to 'Back', course_lectures_path
+'|
+= link_to 'Create Text Block', course_lecture_blocks_path(@lecture.course, @lecture, block: :text),
+        method: :post,
+        remote: true
+'|
+= link_to 'Create Photo Block', course_lecture_blocks_path(@lecture.course, @lecture, block: :photo),
+        method: :post,
+        remote: true
+'|
+= link_to 'Create Video Block', course_lecture_blocks_path(@lecture.course, @lecture, block: :video),
+        method: :post,
+        remote: true
+'|
+= link_to 'Create File Block', course_lecture_blocks_path(@lecture.course, @lecture, block: :file),
+        method: :post,
+        remote: true
+'|
+= link_to 'Create Code Block', course_lecture_blocks_path(@lecture.course, @lecture, block: :code),
+        method: :post,
+        remote: true
