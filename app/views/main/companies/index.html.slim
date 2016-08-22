@@ -7,17 +7,6 @@ table.table.table-hover.table-striped
     th Description
     th
     th
-  - current_user.companies.each do |company|
-    tr
-      td
-        = company.name
-      td
-        = link_to company.domain, root_url(subdomain: company.domain)
-      td
-        = company.description
-      td
-        = link_to 'Edit', edit_company_path(company) if policy(company).edit?
-      td
-        = link_to 'Destroy', company, data: {confirm: 'Are you sure?'}, method: :delete if policy(company).destroy?
-
+  = render current_user.companies
+    
 = link_to 'New Company', new_company_path, class: 'btn btn-blue-fill' if policy(Company.new).create?

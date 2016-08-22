@@ -1,0 +1,11 @@
+tr
+  td
+    = company.name
+  td
+    = link_to company.domain, root_url(subdomain: company.domain)
+  td
+    = company.description
+  td
+    = link_to 'Edit', edit_company_path(company) if policy(company).edit?
+  td
+    = link_to 'Destroy', company, data: {confirm: 'Are you sure?'}, method: :delete if policy(company).destroy?

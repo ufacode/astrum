@@ -15,7 +15,7 @@ class Main::CompaniesController < Main::ApplicationController
   def create
     @company = Company.new(company_params)
     @company.users << current_user
-    authorize @company
+    authorize_it
 
     if @company.save
       redirect_to @company, notice: 'Company was successfully created.'
