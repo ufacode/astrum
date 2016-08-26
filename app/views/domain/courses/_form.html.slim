@@ -1,11 +1,19 @@
-= form_for([@company, @course]) do |f|
+= form_for @course, class: 'form-horizontal' do |f|
+
   = form_errors(@course)
 
-  .field
+  .form-group
     = f.label :name
-    = f.text_field :name
-  - if !@course.new_record?
-    .field
+    = f.text_field :name, class: 'form-control'
+
+  - if @course.persisted?
+    .form-group
       = label_tag :publish_checkbox
-      = check_box_tag :publish_checkbox, {}, @course.published?
-  .actions = f.submit
+      =< check_box_tag :publish_checkbox, {}, @course.published?, class: 'form-inline'
+    .form-group
+      ul
+      - @course.lectures.each do |lecture|
+        li= link_to lecture.full_name, edit_lecture_path(lecture)
+      = link_to '+ Add new Lecture', new_course_lecture_path(@course), class: 'btn btn-success'
+
+  .form-group = f.submit 'Save', class: 'btn btn-success'

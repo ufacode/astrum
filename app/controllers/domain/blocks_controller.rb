@@ -23,13 +23,13 @@ class Domain::BlocksController < Domain::ApplicationController
     else
       @block.move_lower
     end
-    redirect_to course_lecture_path(@block.lecture.course, @block.lecture)
+    redirect_to lecture_path(@block.lecture)
   end
 
   def destroy
     @lecture = @block.lecture
     @block.destroy
-    redirect_to course_lecture_path(@lecture.course, @lecture), notice: 'Block was successfully destroyed.'
+    redirect_to lecture_path(@lecture), notice: 'Block was successfully destroyed.'
   end
 
   private
@@ -47,7 +47,7 @@ class Domain::BlocksController < Domain::ApplicationController
   end
 
   def find_block
-    @type = params[:block]
+    @type = params[:block_]
   end
 
   def authorize_it

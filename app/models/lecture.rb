@@ -7,6 +7,10 @@ class Lecture < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :course, presence: true
+
+  def full_name
+    "##{id}. #{name}"
+  end
 end
 
 # == Schema Information

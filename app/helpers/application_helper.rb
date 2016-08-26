@@ -11,4 +11,20 @@ module ApplicationHelper
     end
     html.join.html_safe
   end
+
+  def blockable_form_tpl(blockable)
+    klass = block_name(blockable)
+    "domain/block/#{klass.pluralize}/form"
+  end
+
+  def blockable_show_tpl(blockable)
+    klass = block_name(blockable)
+    "domain/block/#{klass.pluralize}/#{klass}"
+  end
+
+  private
+
+  def block_name(blockable)
+    blockable.class.to_s.split('::').last.downcase
+  end
 end

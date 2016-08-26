@@ -1,8 +1,0 @@
-= form_for @block.blockable, url: block_text_path(@block) do |f|
-  = form_errors(@block.blockable)
-
-  .field
-    = f.label :content
-    = f.text_area :content
-
-  .actions = f.submit
