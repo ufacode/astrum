@@ -3,7 +3,7 @@ class Block < ApplicationRecord
   acts_as_list scope: :lecture
 
   belongs_to :lecture
-  belongs_to :blockable, polymorphic: true
+  belongs_to :blockable, polymorphic: true, dependent: :destroy
 end
 
 # == Schema Information

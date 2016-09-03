@@ -1,13 +1,8 @@
 # frozen_string_literal: true
 class Domain::LecturesController < Domain::ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:show]
   before_action :set_lecture, only: [:show, :edit, :update, :destroy]
-  before_action :set_course, only: [:index, :new, :create, :edit]
   before_action :authorize_it, only: [:edit, :update, :destroy]
-
-  def index
-    @lectures = Lecture.where(course: @course)
-  end
 
   def show; end
 
@@ -21,7 +16,7 @@ class Domain::LecturesController < Domain::ApplicationController
     @lecture = @course.lectures.build(lecture_params)
 
     if @lecture.save
-      redirect_to course_lecture_path(@lecture.course, @lecture), notice: 'Lecture was successfully created.'
+      redirect_to lecture_path(@lecture), notice: 'Lecture was successfully created.'
     else
       render :new
     end
@@ -29,7 +24,7 @@ class Domain::LecturesController < Domain::ApplicationController
 
   def update
     if @lecture.update(lecture_params)
-      redirect_to course_lecture_path(@lecture.course, @lecture), notice: 'Lecture was successfully updated.'
+      redirect_to lecture_path(@lecture), notice: 'Lecture was successfully updated.'
     else
       render :edit
     end
@@ -37,17 +32,13 @@ class Domain::LecturesController < Domain::ApplicationController
 
   def destroy
     @lecture.destroy
-    redirect_to course_lectures_path, notice: 'Lecture was successfully destroyed.'
+    redirect_to course_path(@course), notice: 'Lecture was successfully destroyed.'
   end
 
   private
 
   def set_lecture
     @lecture = Lecture.find(params[:id])
-  end
-
-  def set_course
-    @course = Course.find(params[:course_id])
   end
 
   def lecture_params

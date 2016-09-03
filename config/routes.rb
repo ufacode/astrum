@@ -10,8 +10,15 @@ Rails.application.routes.draw do
 
   constraints(RouteConstraint::Subdomain.new) do
     scope module: :domain do
+
       resources :courses do
-        resources :lectures
+        resources :lectures, except: [:index], shallow: true do
+          resources :blocks, shallow: true
+        end
+      end
+
+      namespace :block do
+        resources :texts, only: [:show, :edit, :update]
       end
     end
   end

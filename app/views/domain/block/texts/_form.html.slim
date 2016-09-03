@@ -1,0 +1,12 @@
+- @block ||= block
+div data-block="#{@block.id}"
+  = form_for @block.blockable, remote: true do |f|
+    = hidden_field_tag :block_id, @block.id
+    = form_errors(@block)
+
+    .form-group
+      = f.label :content
+      = f.text_area :content, class: 'form-control'
+
+    .form-group
+      = f.submit 'Save', class: 'btn btn-success'

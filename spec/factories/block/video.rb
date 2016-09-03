@@ -4,7 +4,7 @@ FactoryGirl.define do
     video { Faker::Internet.url }
 
     after(:build) do |block_video|
-      block = FactoryGirl.create(:block)
+      block = FactoryGirl.create(:block_)
       block_video.block = block
     end
   end

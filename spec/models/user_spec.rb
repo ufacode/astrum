@@ -27,4 +27,17 @@ RSpec.describe User, type: :model do
       expect(subject.errors[:email].count).to be > 0
     end
   end
+
+  describe '#full_name' do
+    it 'return name' do
+      subject.valid?
+      expect(subject.full_name).to eq subject.name
+    end
+
+    it 'return email if name is empty' do
+      subject.name = nil
+      subject.save(validation: false)
+      expect(subject.full_name).to eq subject.email
+    end
+  end
 end

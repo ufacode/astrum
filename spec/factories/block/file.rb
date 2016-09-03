@@ -4,7 +4,7 @@ FactoryGirl.define do
     file { Faker::Lorem.paragraph }
 
     after(:build) do |block_file|
-      block = FactoryGirl.create(:block)
+      block = FactoryGirl.create(:block_)
       block_file.block = block
     end
   end
