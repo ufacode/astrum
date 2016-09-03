@@ -15,6 +15,7 @@ class Domain::BlocksController < Domain::ApplicationController
   def create
     @block = Lecture::CreateBlock.new(@lecture, find_block).perform
     authorize_it
+    render 'domain/block/create'
   end
 
   def update

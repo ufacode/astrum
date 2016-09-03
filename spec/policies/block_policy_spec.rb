@@ -2,7 +2,7 @@
 RSpec.describe BlockPolicy do
   subject { described_class }
   let(:guest) { FactoryGirl.create(:user) }
-  let(:block_) { FactoryGirl.create(:block) }
+  let(:block) { FactoryGirl.create(:block_) }
   let(:owner) { block.lecture.course.company.owner }
 
   permissions :create?, :new? do

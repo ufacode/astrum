@@ -2,7 +2,6 @@
 class Domain::LecturesController < Domain::ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :set_lecture, only: [:show, :edit, :update, :destroy]
-  before_action :set_course, only: [:new, :create, :edit]
   before_action :authorize_it, only: [:edit, :update, :destroy]
 
   def show; end
@@ -40,10 +39,6 @@ class Domain::LecturesController < Domain::ApplicationController
 
   def set_lecture
     @lecture = Lecture.find(params[:id])
-  end
-
-  def set_course
-    @course = Course.find(params[:course_id])
   end
 
   def lecture_params
