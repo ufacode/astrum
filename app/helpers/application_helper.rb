@@ -1,15 +1,17 @@
 # frozen_string_literal: true
 module ApplicationHelper
   def form_errors(form, _show_field = true)
-    html = []
-    if form && form.errors.any?
-      html << %(<div id="error_explanation"><h2>#{pluralize(form.errors.count, 'error')} prohibited this lecture from being saved:</h2><ul>)
-      form.errors.full_messages.each do |msg|
-        html << %(<li>#{msg}</li>)
+    return '' unless form&.errors
+    content_tag :div do
+      content_tag :div, id: 'error_explanation' do
+        content_tag :h2, "Found #{pluralize(form.errors.count, 'error')}"
       end
-      html << '</ul></div>'
+      content_tag :ul do
+        form.errors.full_messages.each do |msg|
+          concat(content_tag :li, msg)
+        end
+      end
     end
-    html.join.html_safe
   end
 
   def blockable_form_tpl(blockable)

@@ -6,3 +6,18 @@
     = f.text_field :name, class: 'form-control'
 
   .form-group = f.submit 'Save', class: 'btn btn-success'
+
+- if @lecture.persisted?
+  div#blocks
+    - @lecture.blocks.each do |block|
+      div data-block="#{block.id}"
+        = render block.blockable, block: block.blockable
+
+  .row
+    .col-lg-12
+      .btn-group
+        = link_to 'Create Text Block', lecture_blocks_path(@lecture, block_: :text), method: :post, remote: true, class: 'btn btn-default'
+        = link_to 'Create Photo Block', lecture_blocks_path(@lecture, block_: :photo), method: :post, remote: true, class: 'btn btn-default'
+        = link_to 'Create Video Block', lecture_blocks_path(@lecture, block_: :video), method: :post, remote: true, class: 'btn btn-default'
+        = link_to 'Create File Block', lecture_blocks_path(@lecture, block_: :file), method: :post, remote: true, class: 'btn btn-default'
+        = link_to 'Create Code Block', lecture_blocks_path(@lecture, block_: :code), method: :post, remote: true, class: 'btn btn-default'

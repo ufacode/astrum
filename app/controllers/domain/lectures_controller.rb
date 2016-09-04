@@ -3,6 +3,7 @@ class Domain::LecturesController < Domain::ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :set_lecture, only: [:show, :edit, :update, :destroy]
   before_action :authorize_it, only: [:edit, :update, :destroy]
+  before_action :set_course, only: [:new, :create]
 
   def show; end
 
@@ -16,7 +17,7 @@ class Domain::LecturesController < Domain::ApplicationController
     @lecture = @course.lectures.build(lecture_params)
 
     if @lecture.save
-      redirect_to lecture_path(@lecture), notice: 'Lecture was successfully created.'
+      redirect_to edit_lecture_path(@lecture), notice: 'Lecture was successfully created.'
     else
       render :new
     end
@@ -24,25 +25,30 @@ class Domain::LecturesController < Domain::ApplicationController
 
   def update
     if @lecture.update(lecture_params)
-      redirect_to lecture_path(@lecture), notice: 'Lecture was successfully updated.'
+      redirect_to edit_lecture_path(@lecture), notice: 'Lecture was successfully updated.'
     else
       render :edit
     end
   end
 
   def destroy
+    @course = @lecture.course
     @lecture.destroy
     redirect_to course_path(@course), notice: 'Lecture was successfully destroyed.'
   end
 
   private
 
+  def set_course
+    @course = Course.find(params[:course_id])
+  end
+
   def set_lecture
     @lecture = Lecture.find(params[:id])
   end
 
   def lecture_params
-    params.require(:lecture).permit(:name, :course)
+    params.require(:lecture).permit(:name)
   end
 
   def authorize_it

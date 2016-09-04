@@ -2,7 +2,7 @@ h1 Editing lecture
 
 = render 'form'
 
-= link_to 'Show', lecture_path(@lecture)
-'|
-= link_to 'Back', edit_course_path(@lecture.course)
+.clearfix
+  = link_to 'Show', lecture_path(@lecture)
+  = link_to 'Back', course_path(@lecture.course)
 
