@@ -18,7 +18,11 @@ Rails.application.routes.draw do
       end
 
       namespace :block do
+        resources :codes, only: [:show, :edit, :update]
+        resources :files, only: [:show, :edit, :update]
+        resources :photos, only: [:show, :edit, :update]
         resources :texts, only: [:show, :edit, :update]
+        resources :videos, only: [:show, :edit, :update]
       end
     end
   end

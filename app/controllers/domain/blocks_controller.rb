@@ -30,7 +30,7 @@ class Domain::BlocksController < Domain::ApplicationController
   def destroy
     @lecture = @block.lecture
     @block.destroy
-    redirect_to lecture_path(@lecture), notice: 'Block was successfully destroyed.'
+    redirect_to edit_lecture_path(@lecture), notice: 'Block was successfully destroyed.'
   end
 
   private

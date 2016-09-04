@@ -1,8 +1,12 @@
-= form_for @block.blockable, url: block_video_path(@block) do |f|
-  = form_errors(@block.blockable)
+- @block ||= block
+div data-block="#{@block.id}"
+  = form_for @block.blockable, remote: true do |f|
+    = hidden_field_tag :block_id, @block.id
+    = form_errors(@block)
 
-  .field
-    = f.label :video
-    = f.text_field :video
+    .form-group
+      = f.label :video
+      = f.text_field :video, class: 'form-control'
 
-  .actions = f.submit
+    .form-group
+      = f.submit 'Save', class: 'btn btn-success'
