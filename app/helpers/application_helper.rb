@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 module ApplicationHelper
   def form_errors(form, _show_field = true)
-    return '' unless form&.errors
+    return '' if form&.errors.blank?
     content_tag :div do
-      content_tag :div, id: 'error_explanation' do
+      concat(content_tag(:div, id: 'error_explanation') do
         content_tag :h2, "Found #{pluralize(form.errors.count, 'error')}"
-      end
-      content_tag :ul do
+      end)
+      concat(content_tag(:ul) do
         form.errors.full_messages.each do |msg|
           concat(content_tag :li, msg)
         end
-      end
+      end)
     end
   end
 
