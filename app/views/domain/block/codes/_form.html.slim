@@ -1,12 +1,16 @@
-= form_for @block.blockable, url: block_code_path(@block) do |f|
-  = form_errors(@block.blockable)
+- @block ||= block
+div data-block="#{@block.id}"
+  = form_for @block.blockable, remote: true do |f|
+    = hidden_field_tag :block_id, @block.id
+    = form_errors(@block)
 
-  .field
-    = f.label :language
-    = f.text_field :language
+    .form-group
+      = f.label :language
+      = f.text_field :language, class: 'form-control'
 
-  .field
-    = f.label :content
-    = f.text_area :content
+    .form-group
+      = f.label :content
+      = f.text_area :content, class: 'form-control'
 
-  .actions = f.submit
+    .form-group
+      = f.submit 'Save', class: 'btn btn-success'

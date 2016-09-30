@@ -1,25 +1,14 @@
 # frozen_string_literal: true
-class Domain::Blocks::PhotosController < Domain::ApplicationController
-  before_action :set_block_photos, only: [:edit, :update]
-
-  def edit; end
-
-  def update
-    if @block_photos.update(block_photos_params)
-      redirect_to course_lecture_path(@block_photos.block.lecture.course, @block_photos.block.lecture),
-                  notice: 'Photo was successfully updated.'
-    else
-      render :edit
-    end
-  end
+class Domain::Block::PhotosController < Domain::Block::ApplicationController
+  before_action :set_photo
 
   private
 
-  def set_block_photos
-    @block_photos = Block.find(params[:block_id]).blockable
+  def set_photo
+    @blockable = Block::Photo.find params[:id]
   end
 
-  def block_photos_params
+  def blockable_params
     params.require(:block_photo).permit(:photo)
   end
 end

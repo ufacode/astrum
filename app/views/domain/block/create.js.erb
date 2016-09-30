@@ -1,1 +1,1 @@
-$('#blocks').append('<%= j render("domain/block/#{@type.pluralize}/form", block: @block.blockable) %>');
+$('#blocks').append('<%= j render(blockable_form_tpl(@block.blockable), block: @block.blockable) %>');
