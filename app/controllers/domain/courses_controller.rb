@@ -1,8 +1,9 @@
 # frozen_string_literal: true
+
 class Domain::CoursesController < Domain::ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_it, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :set_course, only: %i[show edit update destroy]
+  before_action :authorize_it, only: %i[edit update destroy]
 
   def index
     @courses = Course.where(company: current_company)

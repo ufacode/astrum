@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 FactoryGirl.define do
   factory :block_photo, class: 'Block::Photo' do
     photo { Faker::Internet.url }

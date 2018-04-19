@@ -1,16 +1,16 @@
 # frozen_string_literal: true
+
 class Domain::BlocksController < Domain::ApplicationController
   before_action :authenticate_user!
   before_action :set_lecture, only: :create
-  before_action :set_block, only: [:edit, :update, :destroy]
-  before_action :authorize_it, only: [:edit, :update, :destroy]
+  before_action :set_block, only: %i[edit update destroy]
+  before_action :authorize_it, only: %i[edit update destroy]
 
   def new
     @block = Block.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @block = Lecture::CreateBlock.new(@lecture, find_block).perform
@@ -44,7 +44,7 @@ class Domain::BlocksController < Domain::ApplicationController
   end
 
   def block_params
-    params.permit(:order, keys: [:up, :down])
+    params.permit(:order, keys: %i[up down])
   end
 
   def find_block

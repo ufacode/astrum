@@ -24,7 +24,7 @@ gem 'paranoia', github: 'rubysherpas/paranoia', branch: 'rails5'
 gem 'puma', '~> 3.0'
 gem 'pundit'
 gem 'russian'
-gem 'rails', '~> 5.0.0'
+gem 'rails', '~> 5'
 gem 'rubocop', require: false, group: [:development, :test], github: 'bbatsov/rubocop'
 gem 'rspec-rails', require: false, group: [:development, :test]
 gem 'sass-rails', '~> 5.0'

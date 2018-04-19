@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 FactoryGirl.define do
   factory :block_video, class: 'Block::Video' do
     video { Faker::Internet.url }

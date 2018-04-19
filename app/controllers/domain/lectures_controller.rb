@@ -1,9 +1,10 @@
 # frozen_string_literal: true
+
 class Domain::LecturesController < Domain::ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :set_lecture, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_it, only: [:edit, :update, :destroy]
-  before_action :set_course, only: [:new, :create]
+  before_action :set_lecture, only: %i[show edit update destroy]
+  before_action :authorize_it, only: %i[edit update destroy]
+  before_action :set_course, only: %i[new create]
 
   def show; end
 

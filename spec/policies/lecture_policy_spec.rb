@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 RSpec.describe LecturePolicy do
   subject { described_class }
   let(:guest) { FactoryGirl.create(:user) }
@@ -14,7 +15,6 @@ RSpec.describe LecturePolicy do
       expect(subject).to permit(FactoryGirl.create(:user), Lecture.new)
     end
   end
-  #
   permissions :edit?, :update?, :destroy? do
     it 'access granted if is User is Owner' do
       expect(subject).to permit(owner, lecture)

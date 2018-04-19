@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Domain::Block::TextsController < Domain::Block::ApplicationController
   before_action :set_text
 

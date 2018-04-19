@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 RSpec.describe Block::Text, type: :model do
   subject { FactoryGirl.build(:block_text) }
 

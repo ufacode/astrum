@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 RSpec.describe Lecture, type: :model do
   subject { FactoryGirl.build(:lecture) }
 

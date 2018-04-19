@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 FactoryGirl.define do
   factory :block_code, class: 'Block::Code' do
     language { Faker::Hacker.noun }

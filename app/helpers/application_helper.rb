@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module ApplicationHelper
   def form_errors(form, _show_field = true)
     return '' if form&.errors.blank?
@@ -8,7 +9,7 @@ module ApplicationHelper
       end)
       concat(content_tag(:ul) do
         form.errors.full_messages.each do |msg|
-          concat(content_tag :li, msg)
+          concat(content_tag(:li, msg))
         end
       end)
     end

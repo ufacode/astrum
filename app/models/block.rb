@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Block < ApplicationRecord
   acts_as_list scope: :lecture
 

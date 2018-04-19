@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 shared_examples_for 'a Paranoid model' do
   it 'adds a deleted_at where clause' do
     expect(described_class.all.where_sql).to include('`deleted_at` IS NULL')

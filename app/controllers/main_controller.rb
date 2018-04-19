@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class MainController < Main::ApplicationController
   layout 'main/main'
 

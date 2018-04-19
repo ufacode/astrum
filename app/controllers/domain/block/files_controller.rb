@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Domain::Block::FilesController < Domain::Block::ApplicationController
   before_action :set_file
 

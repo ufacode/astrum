@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 RSpec.describe Block::Photo, type: :model do
   subject { FactoryGirl.build(:block_photo) }
 

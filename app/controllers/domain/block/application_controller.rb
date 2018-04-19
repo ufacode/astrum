@@ -1,6 +1,7 @@
 # frozen_string_literal: true
+
 class Domain::Block::ApplicationController < Domain::ApplicationController
-  before_action :set_block, only: [:edit, :update]
+  before_action :set_block, only: %i[edit update]
 
   def edit
     render block_view('edit')
