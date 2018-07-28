@@ -20,12 +20,12 @@ gem 'jquery-rails'
 gem 'listen', '~> 3.0.5', group: [:development]
 gem 'mysql2', '>= 0.3.18', '< 0.5'
 gem 'nprogress-rails' # turbolinks progressbar
-gem 'paranoia', github: 'rubysherpas/paranoia', branch: 'rails5'
+gem 'paranoia'
 gem 'puma', '~> 3.0'
 gem 'pundit'
 gem 'russian'
 gem 'rails', '~> 5'
-gem 'rubocop', require: false, group: [:development, :test], github: 'bbatsov/rubocop'
+gem 'rubocop', require: false, group: [:development, :test]
 gem 'rspec-rails', require: false, group: [:development, :test]
 gem 'sass-rails', '~> 5.0'
 gem 'sextant', group: [:development]
