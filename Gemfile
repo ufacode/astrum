@@ -27,7 +27,7 @@ gem 'russian'
 gem 'rails', '~> 5'
 gem 'rubocop', require: false, group: [:development, :test]
 gem 'rspec-rails', require: false, group: [:development, :test]
-gem 'sass-rails', '~> 5.0'
+gem 'sassc-rails'
 gem 'sextant', group: [:development]
 gem 'slim-rails'
 gem 'spring', group: [:development]
