@@ -3,6 +3,12 @@
 class Course < ApplicationRecord
   include AASM
 
+  belongs_to :company
+  has_many :lectures, dependent: :destroy
+
+  validates :name, presence: true, length: { maximum: 255 }
+  validates :company, presence: true
+
   aasm do
     state :draft, initial: true
     state :published
@@ -15,11 +21,6 @@ class Course < ApplicationRecord
       transitions from: :published, to: :draft
     end
   end
-  belongs_to :company
-  has_many :lectures
-
-  validates :name, presence: true, length: { maximum: 255 }
-  validates :company, presence: true
 end
 
 # == Schema Information
@@ -30,7 +31,7 @@ end
 #  company_id :integer
 #  created_at :datetime         not null
 #  id         :integer          not null, primary key
-#  name       :string(255)      not null
+#  name       :string           not null
 #  updated_at :datetime         not null
 #
 # Indexes
@@ -40,5 +41,5 @@ end
 #
 # Foreign Keys
 #
-#  fk_rails_b673e71428  (company_id => companies.id)
+#  fk_rails_...  (company_id => companies.id)
 #

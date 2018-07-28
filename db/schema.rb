@@ -12,38 +12,41 @@
 
 ActiveRecord::Schema.define(version: 20160814170430) do
 
-  create_table "block_codes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "language"
-    t.text     "content",    limit: 4294967295
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "block_codes", force: :cascade do |t|
+    t.string   "language",   limit: 255
+    t.text     "content"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  create_table "block_files", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "block_files", force: :cascade do |t|
     t.string   "file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "block_photos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "block_photos", force: :cascade do |t|
     t.string   "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "block_texts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.text     "content",    limit: 4294967295
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+  create_table "block_texts", force: :cascade do |t|
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "block_videos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "block_videos", force: :cascade do |t|
     t.string   "video"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "blocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "blocks", force: :cascade do |t|
     t.string   "name"
     t.integer  "position"
     t.integer  "lecture_id"
@@ -55,18 +58,18 @@ ActiveRecord::Schema.define(version: 20160814170430) do
     t.index ["lecture_id"], name: "index_blocks_on_lecture_id", using: :btree
   end
 
-  create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                      null: false
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+  create_table "companies", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.datetime "deleted_at"
     t.string   "domain"
     t.index ["deleted_at"], name: "index_companies_on_deleted_at", using: :btree
     t.index ["domain"], name: "index_companies_on_domain", unique: true, using: :btree
   end
 
-  create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "courses", force: :cascade do |t|
     t.string   "name",                  null: false
     t.integer  "company_id"
     t.datetime "created_at",            null: false
@@ -76,7 +79,7 @@ ActiveRecord::Schema.define(version: 20160814170430) do
     t.index ["company_id"], name: "index_courses_on_company_id", using: :btree
   end
 
-  create_table "lectures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "lectures", force: :cascade do |t|
     t.string   "name"
     t.integer  "course_id"
     t.datetime "created_at", null: false
@@ -86,7 +89,7 @@ ActiveRecord::Schema.define(version: 20160814170430) do
     t.index ["deleted_at"], name: "index_lectures_on_deleted_at", using: :btree
   end
 
-  create_table "ownerships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "ownerships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "company_id"
     t.datetime "created_at", null: false
@@ -95,7 +98,7 @@ ActiveRecord::Schema.define(version: 20160814170430) do
     t.index ["user_id"], name: "index_ownerships_on_user_id", using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name",                                null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false

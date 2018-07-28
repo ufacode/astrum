@@ -2,8 +2,8 @@
 
 RSpec.describe BlockPolicy do
   subject { described_class }
-  let(:guest) { FactoryGirl.create(:user) }
-  let(:block) { FactoryGirl.create(:block_) }
+  let(:guest) { FactoryBot.create(:user) }
+  let(:block) { FactoryBot.create(:block_) }
   let(:owner) { block.lecture.course.company.owner }
 
   permissions :create?, :new? do
@@ -12,7 +12,7 @@ RSpec.describe BlockPolicy do
     end
 
     it 'User can create a new Block' do
-      expect(subject).to permit(FactoryGirl.create(:user), Block.new)
+      expect(subject).to permit(FactoryBot.create(:user), Block.new)
     end
   end
   permissions :edit?, :update?, :destroy? do

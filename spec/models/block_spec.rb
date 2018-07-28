@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe Block, type: :model do
-  subject! { FactoryGirl.build(:block_text) }
+  subject! { FactoryBot.build(:block_text) }
 
   context 'with order' do
     before do
-      @lecture = FactoryGirl.create(:lecture)
+      @lecture = FactoryBot.create(:lecture)
       @block1 = @lecture.blocks.create!
       @block2 = @lecture.blocks.create!
     end

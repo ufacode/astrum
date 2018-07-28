@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :block_video, class: 'Block::Video' do
     video { Faker::Internet.url }
 
     after(:build) do |block_video|
-      block = FactoryGirl.create(:block_)
+      block = FactoryBot.create(:block_)
       block_video.block = block
     end
   end

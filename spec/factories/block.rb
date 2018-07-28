@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :block_ do
     after(:build) do |block|
-      lecture = FactoryGirl.create(:lecture)
+      lecture = FactoryBot.create(:lecture)
       block.lecture = lecture
     end
   end

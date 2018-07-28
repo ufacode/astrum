@@ -13,12 +13,12 @@ gem 'bullet', group: [:development]
 gem 'coffee-rails', '~> 4.2'
 gem 'database_cleaner', group: [:development, :test]
 gem 'devise'
-gem 'factory_girl_rails', group: [:development, :test]
+gem 'factory_bot_rails', group: [:development, :test]
 gem 'faker', group: [:development, :test]
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'listen', '~> 3.0.5', group: [:development]
-gem 'mysql2', '>= 0.3.18', '< 0.5'
+gem 'pg'
 gem 'nprogress-rails' # turbolinks progressbar
 gem 'paranoia'
 gem 'puma', '~> 3.0'

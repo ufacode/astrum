@@ -2,8 +2,8 @@
 
 RSpec.describe LecturePolicy do
   subject { described_class }
-  let(:guest) { FactoryGirl.create(:user) }
-  let(:lecture) { FactoryGirl.create(:lecture) }
+  let(:guest) { FactoryBot.create(:user) }
+  let(:lecture) { FactoryBot.create(:lecture) }
   let(:owner) { lecture.course.company.owner }
 
   permissions :create?, :new? do
@@ -12,7 +12,7 @@ RSpec.describe LecturePolicy do
     end
 
     it 'User can create a new Lecture' do
-      expect(subject).to permit(FactoryGirl.create(:user), Lecture.new)
+      expect(subject).to permit(FactoryBot.create(:user), Lecture.new)
     end
   end
   permissions :edit?, :update?, :destroy? do

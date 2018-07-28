@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Lecture, type: :model do
-  subject { FactoryGirl.build(:lecture) }
+  subject { FactoryBot.build(:lecture) }
 
   context 'with validation' do
     it 'checks empty name' do

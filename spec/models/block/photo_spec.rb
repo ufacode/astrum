@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Block::Photo, type: :model do
-  subject { FactoryGirl.build(:block_photo) }
+  subject { FactoryBot.build(:block_photo) }
 
   context 'with validation' do
     it 'checks empty photo' do

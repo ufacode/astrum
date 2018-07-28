@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Block::Code, type: :model do
-  subject { FactoryGirl.build(:block_code) }
+  subject { FactoryBot.build(:block_code) }
 
   context 'with validation' do
     it 'checks empty content' do

@@ -40,6 +40,8 @@ AllCops:
     - Gemfile
     - Gemfile.lock
     - Guardfile
+    - spec/**/*
+    - lib/tasks/**/*
 
 Rails:
   Enabled: true

@@ -4,7 +4,7 @@ class Lecture < ApplicationRecord
   acts_as_paranoid
 
   belongs_to :course
-  has_many :blocks, -> { order('position ASC') }
+  has_many :blocks, -> { order('position ASC') }, dependent: :destroy, inverse_of: :lecture
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :course, presence: true
@@ -22,7 +22,7 @@ end
 #  created_at :datetime         not null
 #  deleted_at :datetime
 #  id         :integer          not null, primary key
-#  name       :string(255)
+#  name       :string
 #  updated_at :datetime         not null
 #
 # Indexes

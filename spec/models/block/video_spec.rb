@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Block::Video, type: :model do
-  subject { FactoryGirl.build(:block_video) }
+  subject { FactoryBot.build(:block_video) }
 
   context 'with validation' do
     it 'checks empty video' do

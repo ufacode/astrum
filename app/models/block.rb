@@ -12,11 +12,11 @@ end
 # Table name: blocks
 #
 #  blockable_id   :integer
-#  blockable_type :string(255)
+#  blockable_type :string
 #  created_at     :datetime         not null
 #  id             :integer          not null, primary key
 #  lecture_id     :integer
-#  name           :string(255)
+#  name           :string
 #  position       :integer
 #  updated_at     :datetime         not null
 #

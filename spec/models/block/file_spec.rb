@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Block::File, type: :model do
-  subject { FactoryGirl.build(:block_file) }
+  subject { FactoryBot.build(:block_file) }
 
   context 'with validation' do
     it 'checks empty file' do

@@ -22,6 +22,6 @@ end
 #
 # Foreign Keys
 #
-#  fk_rails_68282d75fa  (user_id => users.id)
-#  fk_rails_a3ec7d6c5e  (company_id => companies.id)
+#  fk_rails_...  (company_id => companies.id)
+#  fk_rails_...  (user_id => users.id)
 #
