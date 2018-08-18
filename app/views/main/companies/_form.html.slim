@@ -1,13 +1,15 @@
 = form_for @company do |f|
+
   = form_errors(@company)
 
-  .field
+  .from-group
     = f.label :name
-    = f.text_field :name
-  .field
+    = f.text_field :name, class: 'form-control'
+  .from-group
     = f.label :domain
-    = f.text_field :domain
-  .field
+    = f.text_field :domain, class: 'form-control'
+  .from-group
     = f.label :description
-    = f.text_area :description
-  .actions = f.submit
+    = f.text_area :description, class: 'form-control'
+  .from-group
+    = f.submit t('actions.create'), class: 'btn btn-primary'
