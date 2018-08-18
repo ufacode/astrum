@@ -25,10 +25,9 @@ RSpec.describe Company, type: :model do
   end
 
   context 'with soft-delete' do
-    it 'is a paranoid model' do
-      expect(subject).to act_as_paranoid
-    end
-    it_behaves_like 'a Paranoid model'
+    it { is_expected.to have_db_column(:deleted_at) }
+    it { is_expected.to have_db_index(:deleted_at) }
+    it { expect(described_class.all.where_sql).to include '"deleted_at" IS NULL' }
   end
 
   describe '#owner' do

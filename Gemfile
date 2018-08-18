@@ -29,6 +29,7 @@ gem 'rubocop', require: false, group: [:development, :test]
 gem 'rspec-rails', require: false, group: [:development, :test]
 gem 'sassc-rails'
 gem 'sextant', group: [:development]
+gem 'shoulda-matchers', group: [:test]
 gem 'slim-rails'
 gem 'spring', group: [:development]
 gem 'spring-watcher-listen', '~> 2.0.0', group: [:development]
