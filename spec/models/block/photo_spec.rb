@@ -7,7 +7,7 @@ RSpec.describe Block::Photo, type: :model do
     it 'checks empty photo' do
       subject.photo = nil
       subject.valid?
-      expect(subject.errors[:photo].count).to be 0
+      expect(subject.errors[:photo].any?).to be_falsey
     end
   end
 end

@@ -7,7 +7,7 @@ RSpec.describe Block::Text, type: :model do
     it 'checks empty content' do
       subject.content = nil
       subject.valid?
-      expect(subject.errors[:content].count).to be 0
+      expect(subject.errors[:content].any?).to be_falsey
     end
   end
 end

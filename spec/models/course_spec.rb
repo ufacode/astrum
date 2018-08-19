@@ -7,13 +7,13 @@ RSpec.describe Course, type: :model do
     it 'checks empty name' do
       subject.name = nil
       subject.valid?
-      expect(subject.errors[:name].count).to be > 0
+      expect(subject.errors[:name].any?).to be_truthy
     end
 
     it 'check length of name' do
       subject.name = 'Astrum' * 100
       subject.valid?
-      expect(subject.errors[:name].count).to be > 0
+      expect(subject.errors[:name].any?).to be_truthy
     end
   end
 
@@ -21,14 +21,17 @@ RSpec.describe Course, type: :model do
     it 'company not to be nil' do
       subject.company = nil
       subject.valid?
-      expect(subject.errors[:company].count).to be > 0
+      expect(subject.errors[:company].any?).to be_truthy
     end
   end
 
   context 'with state machine' do
     it 'will be draft' do
-      expect(subject).to have_state(:draft)
-      expect(subject).not_to have_state(:published)
+      expect(subject).to have_state :draft
+    end
+
+    it 'will be draft' do
+      expect(subject).not_to have_state :published
     end
 
     it 'would be published from draft' do

@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 RSpec.describe Block, type: :model do
-  subject! { FactoryBot.build(:block_text) }
-
   context 'with order' do
     before do
       @lecture = FactoryBot.create(:lecture)

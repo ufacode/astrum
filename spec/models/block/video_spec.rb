@@ -7,7 +7,7 @@ RSpec.describe Block::Video, type: :model do
     it 'checks empty video' do
       subject.video = nil
       subject.valid?
-      expect(subject.errors[:video].count).to be 0
+      expect(subject.errors[:video].any?).to be_falsey
     end
   end
 end
